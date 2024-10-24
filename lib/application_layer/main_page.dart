@@ -19,26 +19,11 @@ class _MainPageState extends State<MainPage> {
       body: const RankingPage(),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Classements',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Tournois',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Acceuil',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Matchs',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Mes Pronos',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Classements'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Tournois'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Acceuil'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Matchs'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Mes Pronos')
         ],
         currentIndex: _selectedIndex,
       ),
