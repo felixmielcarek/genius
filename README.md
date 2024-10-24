@@ -31,26 +31,39 @@ Roadmap :
 ## Architecture
 
 ```mermaid
-graph G
-    subgraph MobileApplication
-        direction LR
-        subgraph ApplicationLayer
-            direction LR
-            RP[Ranking Page]
-            RB[Ranking Bloc]
-            PP[Profile Page]
-            PB[Profile Bloc]
-            RP --> RB
-            RB --> RP
-            PP --> PB
-            PB --> PP
-        subgraph DomainLayer
-            direction TB
-            UR[User Repository]
-            RR[Ranking Repository]
-        RB --> UR
-        RB --> RR
-        PB --> UR
-    subgraph DataLayer
-        F[Firestore]   
+graph LR;
+   subgraph MobileApplication;
+      direction LR;
+      subgraph ApplicationLayer;
+         direction LR;
+         RP[Ranking Page];
+         RB[Ranking Bloc];
+         PP[Profile Page];
+         PB[Profile Bloc];
+         RP --> RB;
+         RB --> RP;
+         PP --> PB;
+         PB --> PP;
+      end;
+      
+      subgraph DomainLayer;
+         direction TB;
+         UR[User Repository];
+         RR[Ranking Repository];
+
+                  
+      end;
+
+      RB --> UR;
+      RB --> RR;
+      PB --> UR;
+   end;
+
+   subgraph DataLayer;
+      direction LR;
+      F[Firestore];
+
+      UR --> F;
+      RR --> F;
+   end;
 ```
