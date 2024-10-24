@@ -14,10 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Genius',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          brightness: Brightness.light,
-          seedColor: const Color(0x007584ff),
-        ),
+        fontFamily: 'Poppins',
         useMaterial3: true,
       ),
       home: const MainPage(),
