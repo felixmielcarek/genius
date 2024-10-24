@@ -7,8 +7,9 @@ class RankingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
+        decoration: const BoxDecoration(color: GeniusColors.secondary),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Container(
             padding: const EdgeInsets.only(left: 10.0),
