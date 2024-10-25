@@ -1,10 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-import 'application_layer/main_page.dart';
-import 'domain_layer/business/user.dart';
-import 'domain_layer/firebase_options.dart';
-import 'domain_layer/firestore_data_provider.dart';
+import 'domain/business/user.dart';
+import 'domain/firebase_options.dart';
+import 'domain/firestore_data_provider.dart';
+import 'views/pages/main_page.dart';
 
 void main() async {
   const connectedUserId = "SlF76lNTx8QBkhBdDxir";

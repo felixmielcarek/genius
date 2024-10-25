@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:genius/application_layer/genius_colors.dart';
-import 'package:genius/application_layer/ranking_page.dart';
+import 'package:genius/views/pages/ranking_page.dart';
+import 'package:genius/views/resources/genius_colors.dart';
 
-import '../domain_layer/business/user.dart';
+import '../../domain/business/user.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
