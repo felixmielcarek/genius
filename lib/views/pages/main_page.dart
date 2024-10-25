@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:genius/views/pages/ranking_page.dart';
@@ -36,56 +37,156 @@ class _MainPageState extends State<MainPage> {
         child: Scaffold(
             appBar: PreferredSize(
                 preferredSize: const Size.fromHeight(80.0),
-                child: Row(children: [
-                  Container(
-                      decoration: BoxDecoration(
-                          color: GeniusColors.primary,
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.white, width: 3.0),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.black.withOpacity(0.5),
-                                blurRadius: 5)
-                          ]),
-                      child: ClipOval(
-                          child:
-                              Image.memory(connectedUser.picture, height: 35))),
-                  Column(children: [
-                    Row(children: [
-                      SvgPicture.asset('assets/icons/coins.svg',
-                          semanticsLabel: 'Coin icon', height: 20),
-                      Text(connectedUser.coinsWallet.toString())
+                child: Container(
+                    decoration: BoxDecoration(color: Colors.white, boxShadow: [
+                      BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          offset: const Offset(0, 2),
+                          blurRadius: 2,
+                          spreadRadius: 1)
                     ]),
-                    const Text("Champion")
-                  ]),
-                  const Spacer(),
-                  Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Container(
-                          margin: const EdgeInsets.only(bottom: 10),
-                          height: 40,
-                          width: 135,
+                    child: Row(children: [
+                      Container(
+                          margin: const EdgeInsets.only(left: 20),
+                          width: 56,
+                          height: 56,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              gradient: const LinearGradient(
-                                  colors: [
-                                    GeniusColors.accentStart,
-                                    GeniusColors.accentEnd
-                                  ],
-                                  begin: Alignment.bottomLeft,
-                                  end: Alignment.topCenter)),
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.black.withOpacity(0.5),
+                                    blurRadius: 5)
+                              ]),
+                          child: Stack(alignment: Alignment.center, children: [
+                            SizedBox(
+                                width: 53,
+                                height: 53,
+                                child: CircularProgressIndicator(
+                                    value: (connectedUser.xp % 1000) / 1000,
+                                    strokeWidth: 3.5,
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                        GeniusColors.progress.withOpacity(0.7)),
+                                    backgroundColor: Colors.white)),
+                            Container(
+                                decoration: const BoxDecoration(
+                                    color: GeniusColors.accentEnd,
+                                    shape: BoxShape.circle),
+                                child: ClipOval(
+                                    child: Image.memory(connectedUser.picture,
+                                        height: 50,
+                                        width: 50,
+                                        fit: BoxFit.cover)))
+                          ])),
+                      Container(
+                          margin: const EdgeInsets.only(left: 8),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                SvgPicture.asset('assets/icons/shop.svg',
-                                    height: 25),
-                                const Text('Boutique',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16,
-                                        color: GeniusColors.textPrimary))
-                              ])))
-                ])),
+                                Row(children: [
+                                  SvgPicture.asset('assets/icons/coins.svg',
+                                      semanticsLabel: 'Coin icon', height: 20),
+                                  Container(
+                                      margin: const EdgeInsets.only(left: 5),
+                                      child: Text(
+                                          connectedUser.coinsWallet.toString(),
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16,
+                                              color: GeniusColors.textPrimary)))
+                                ]),
+                                Container(
+                                    margin: const EdgeInsets.only(top: 5),
+                                    child: Stack(children: [
+                                      Container(
+                                          padding:
+                                              const EdgeInsets.only(right: 4),
+                                          width: 100,
+                                          height: 20,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: GeniusColors.primary,
+                                                width: 1.5),
+                                            borderRadius:
+                                                BorderRadius.circular(6),
+                                          ),
+                                          child: Align(
+                                              alignment: Alignment.centerRight,
+                                              child: Text(
+                                                  "#${connectedUser.leagueRank}",
+                                                  style: const TextStyle(
+                                                      fontSize: 10,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: GeniusColors
+                                                          .primary)))),
+                                      Container(
+                                          padding:
+                                              const EdgeInsets.only(left: 5),
+                                          width: 70,
+                                          height: 20,
+                                          decoration: BoxDecoration(
+                                            color: GeniusColors.primary,
+                                            borderRadius:
+                                                BorderRadius.circular(6),
+                                          ),
+                                          child: Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text(connectedUser.league,
+                                                  style: const TextStyle(
+                                                      fontSize: 10,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: GeniusColors
+                                                          .textLight))))
+                                    ]))
+                              ])),
+                      const Spacer(),
+                      Align(
+                          alignment: Alignment.bottomLeft,
+                          child: badges.Badge(
+                              badgeStyle:
+                                  badges.BadgeStyle(padding: EdgeInsets.all(6)),
+                              badgeContent: const Text('1',
+                                  style: TextStyle(
+                                      color: GeniusColors.textLight,
+                                      fontSize: 10)),
+                              position: badges.BadgePosition.topEnd(end: 8),
+                              child: Container(
+                                  margin: const EdgeInsets.only(
+                                      bottom: 10, right: 10),
+                                  height: 40,
+                                  width: 135,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(30),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color:
+                                                Colors.black.withOpacity(0.3),
+                                            blurRadius: 2)
+                                      ],
+                                      gradient: const LinearGradient(
+                                          colors: [
+                                            GeniusColors.accentStart,
+                                            GeniusColors.accentEnd
+                                          ],
+                                          begin: Alignment.bottomLeft,
+                                          end: Alignment.topCenter)),
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        SvgPicture.asset(
+                                            'assets/icons/shop.svg',
+                                            height: 25),
+                                        const Text('Boutique',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 16,
+                                                color:
+                                                    GeniusColors.textPrimary))
+                                      ]))))
+                    ]))),
             body: _children[_selectedIndex],
             bottomNavigationBar: BottomNavigationBar(
                 items: <BottomNavigationBarItem>[

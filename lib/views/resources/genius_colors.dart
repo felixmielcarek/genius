@@ -6,6 +6,7 @@ class GeniusColors {
   static const Color accentStart = Color(0xFFffe3ba); // jaune
   static const Color accentEnd = Color(0xFFEE9714); // orange
   static const Color notification = Color(0xFFD80027); // rouge
+  static const Color progress = Color(0xFF108236); // vert
 
   static const Color textDark = Color(0xFF000000); // Black
   static const Color textLight = Color(0xFFFFFFFF); // White
