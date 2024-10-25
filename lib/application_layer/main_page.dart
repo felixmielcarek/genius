@@ -3,6 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:genius/application_layer/genius_colors.dart';
 import 'package:genius/application_layer/ranking_page.dart';
 
+import '../domain_layer/business/user.dart';
+
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
@@ -11,10 +13,8 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  final String picture = "person.png";
-  final int coinsWallet = 452;
-
   int _selectedIndex = 0;
+  final User connectedUser = User.connectedUserInstance;
 
   final List<Widget> _children = [
     const RankingPage(),
@@ -48,14 +48,13 @@ class _MainPageState extends State<MainPage> {
                                 blurRadius: 5)
                           ]),
                       child: ClipOval(
-                          child: Image(
-                              image: AssetImage('assets/$picture'),
-                              height: 35))),
+                          child:
+                              Image.memory(connectedUser.picture, height: 35))),
                   Column(children: [
                     Row(children: [
                       SvgPicture.asset('assets/icons/coins.svg',
                           semanticsLabel: 'Coin icon', height: 20),
-                      Text(coinsWallet.toString())
+                      Text(connectedUser.coinsWallet.toString())
                     ]),
                     const Text("Champion")
                   ]),

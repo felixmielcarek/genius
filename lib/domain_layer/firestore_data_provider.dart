@@ -1,13 +1,42 @@
+import 'dart:typed_data';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:genius/domain_layer/business/user.dart';
 
-class FirestoreDataProvider {
+class FirebaseDataProvider {
   Future<User?> readUser(String userId) async {
-    var db = FirebaseFirestore.instance;
+    const oneMegabyte = 1024 * 1024;
     User? res;
-    await db.collection("users").doc(userId).get().then((DocumentSnapshot doc) {
+
+    final db = FirebaseFirestore.instance;
+    final storageRef = FirebaseStorage.instance.ref();
+
+    await db
+        .collection("users")
+        .doc(userId)
+        .get()
+        .then((DocumentSnapshot doc) async {
       final data = doc.data() as Map<String, dynamic>;
-      res = User(userId, data["coinsWallet"], data["name"], data["picture"]);
+
+      final islandRef = storageRef.child(data["picture"]);
+      final Uint8List? picture = await islandRef.getData(oneMegabyte);
+
+      res = User(
+          userId,
+          data["coinsWallet"],
+          data["name"],
+          picture!,
+          data["coinsTotal"],
+          data["gamesPlayed"],
+          data["hofRank"],
+          data["league"],
+          data["leagueRank"],
+          data["passPoints"],
+          data["quickPredictionsRate"],
+          data["validatedOddsRate"],
+          data["winningRate"],
+          data["xp"]);
     });
     return res;
   }
