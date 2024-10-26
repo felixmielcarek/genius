@@ -44,7 +44,7 @@ class RankingItem extends StatelessWidget {
                       fontSize: biggestTexts,
                       color: toAccent
                           ? GeniusColors.textLight
-                          : const Color(0xFF7880ea))),
+                          : GeniusColors.primary)),
               Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Text("/",

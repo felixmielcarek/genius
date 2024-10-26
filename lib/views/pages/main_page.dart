@@ -72,7 +72,7 @@ class _MainPageState extends State<MainPage> {
                     currentIndex: _selectedIndex,
                     type: BottomNavigationBarType.fixed,
                     selectedItemColor: GeniusColors.primary,
-                    unselectedItemColor: const Color(0xff3b5163),
+                    unselectedItemColor: GeniusColors.textPrimary,
                     selectedLabelStyle: const TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 10),
                     unselectedLabelStyle: const TextStyle(

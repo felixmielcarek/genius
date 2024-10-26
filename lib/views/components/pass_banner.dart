@@ -21,7 +21,7 @@ class PassBanner extends StatelessWidget {
               height: 100,
               width: 310,
               decoration: BoxDecoration(
-                  color: const Color(0xFFc0d0ff),
+                  color: GeniusColors.lightBlue,
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: Colors.white, width: 3),
                   boxShadow: [

@@ -2,6 +2,8 @@ import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../resources/genius_colors.dart';
+
 class ToolsTile extends StatelessWidget {
   final String icon;
 
@@ -18,7 +20,7 @@ class ToolsTile extends StatelessWidget {
           height: 35,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
-              color: const Color(0xff3f54b1)),
+              color: GeniusColors.deepBlue),
           child: SvgPicture.asset(
             icon,
             color: Colors.white,

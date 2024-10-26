@@ -43,7 +43,7 @@ class _RankingPageState extends State<RankingPage> {
     return Container(
         padding: const EdgeInsets.only(left: 10, right: 10, top: 20),
         decoration: const BoxDecoration(color: GeniusColors.secondary),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        child: ListView(children: [
           Container(
             padding: const EdgeInsets.only(left: 10.0),
             child: Text("Classement \namis".toUpperCase(),
@@ -62,28 +62,24 @@ class _RankingPageState extends State<RankingPage> {
                       fontSize: 14,
                       color: GeniusColors.textPrimary,
                       height: 1.2))),
-          Expanded(
-              child: ListView.builder(
-                  itemCount: friends.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  ProfilePage(user: friends[index]),
-                            ),
-                          );
-                        },
-                        child: RankingItem(
-                          rank: index + 1,
-                          picture: friends[index].picture,
-                          name: friends[index].name,
-                          score: friends[index].coinsWallet,
-                          toAccent: friends[index].id == connectedUser.id,
-                        ));
-                  }))
+          ...List.generate(friends.length, (index) {
+            return InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProfilePage(user: friends[index]),
+                    ),
+                  );
+                },
+                child: RankingItem(
+                  rank: index + 1,
+                  picture: friends[index].picture,
+                  name: friends[index].name,
+                  score: friends[index].coinsWallet,
+                  toAccent: friends[index].id == connectedUser.id,
+                ));
+          })
         ]));
   }
 }

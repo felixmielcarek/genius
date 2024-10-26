@@ -31,7 +31,7 @@ class MainAppbar extends StatelessWidget {
               margin: const EdgeInsets.only(top: 15),
               child: ProgressFrame(
                 progress: (connectedUser.xp % 1000) / 1000,
-                background: const Color(0xFFffbf24),
+                background: GeniusColors.orange,
                 content: ClipOval(child: Image.memory(connectedUser.picture)),
                 frameRadius: pictureFrameRadius,
                 frameThickness: pictureFrameThickness,
@@ -58,7 +58,7 @@ class MainAppbar extends StatelessWidget {
                         child: LeagueBadge(
                             league: connectedUser.league,
                             rank: connectedUser.leagueRank,
-                            color: const Color(0xFF6760e2),
+                            color: GeniusColors.royalBlue,
                             height: 20,
                             width: 100))
                   ])),
@@ -85,8 +85,8 @@ class MainAppbar extends StatelessWidget {
                           ],
                           gradient: const LinearGradient(
                               colors: [
-                                GeniusColors.accentStart,
-                                Color(0xFFfcc22d)
+                                GeniusColors.accent,
+                                GeniusColors.orange
                               ],
                               begin: Alignment.centerLeft,
                               end: Alignment.topRight)),

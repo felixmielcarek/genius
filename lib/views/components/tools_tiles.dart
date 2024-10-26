@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:genius/views/components/tools_tile.dart';
+import 'package:genius/views/resources/genius_colors.dart';
 
 class ToolsTiles extends StatelessWidget {
   const ToolsTiles({super.key});
@@ -24,7 +25,7 @@ class ToolsTiles extends StatelessWidget {
           height: 35,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
-              color: const Color(0xff3f54b1)),
+              color: GeniusColors.deepBlue),
           child:
               SvgPicture.asset('assets/icons/share.svg', color: Colors.white))
     ]);

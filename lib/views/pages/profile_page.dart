@@ -37,7 +37,7 @@ class ProfilePage extends StatelessWidget {
                             child: Container(
                                 height: 315,
                                 decoration: const BoxDecoration(
-                                    color: Color(0xFF181650),
+                                    color: GeniusColors.darkBlue,
                                     borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(40),
                                         bottomRight: Radius.circular(40))),
@@ -92,7 +92,7 @@ class ProfilePage extends StatelessWidget {
                                               ProfilePicture(
                                                 picture: user.picture,
                                                 background:
-                                                    const Color(0xFFdfa582),
+                                                    GeniusColors.lightOrange,
                                                 frameThickness: 4,
                                                 height: 80,
                                               ),
@@ -101,8 +101,8 @@ class ProfilePage extends StatelessWidget {
                                                   left: 36,
                                                   child: ProgressFrame(
                                                       progress: userProgress,
-                                                      background: const Color(
-                                                          0xFF4451b3),
+                                                      background:
+                                                          GeniusColors.blue,
                                                       frameRadius: 34,
                                                       frameThickness: 1.5,
                                                       content: Column(
@@ -135,7 +135,7 @@ class ProfilePage extends StatelessWidget {
                                         LeagueBadge(
                                             league: user.league,
                                             rank: user.leagueRank,
-                                            color: const Color(0xFFc0d0ff),
+                                            color: GeniusColors.lightBlue,
                                             width: 120,
                                             height: 25),
                                         Container(
