@@ -1,6 +1,7 @@
 import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:genius/views/components/league_badge.dart';
 import 'package:genius/views/pages/ranking_page.dart';
 import 'package:genius/views/resources/genius_colors.dart';
 
@@ -97,56 +98,19 @@ class _MainPageState extends State<MainPage> {
                                 ]),
                                 Container(
                                     margin: const EdgeInsets.only(top: 5),
-                                    child: Stack(children: [
-                                      Container(
-                                          padding:
-                                              const EdgeInsets.only(right: 4),
-                                          width: 100,
-                                          height: 20,
-                                          decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: GeniusColors.primary,
-                                                width: 1.5),
-                                            borderRadius:
-                                                BorderRadius.circular(6),
-                                          ),
-                                          child: Align(
-                                              alignment: Alignment.centerRight,
-                                              child: Text(
-                                                  "#${connectedUser.leagueRank}",
-                                                  style: const TextStyle(
-                                                      fontSize: 10,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: GeniusColors
-                                                          .primary)))),
-                                      Container(
-                                          padding:
-                                              const EdgeInsets.only(left: 5),
-                                          width: 70,
-                                          height: 20,
-                                          decoration: BoxDecoration(
-                                            color: GeniusColors.primary,
-                                            borderRadius:
-                                                BorderRadius.circular(6),
-                                          ),
-                                          child: Align(
-                                              alignment: Alignment.centerLeft,
-                                              child: Text(connectedUser.league,
-                                                  style: const TextStyle(
-                                                      fontSize: 10,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: GeniusColors
-                                                          .textLight))))
-                                    ]))
+                                    child: LeagueBadge(
+                                        league: connectedUser.league,
+                                        rank: connectedUser.leagueRank,
+                                        color: GeniusColors.primary,
+                                        height: 20,
+                                        width: 100))
                               ])),
                       const Spacer(),
                       Align(
                           alignment: Alignment.bottomLeft,
                           child: badges.Badge(
-                              badgeStyle:
-                                  badges.BadgeStyle(padding: EdgeInsets.all(6)),
+                              badgeStyle: const badges.BadgeStyle(
+                                  padding: EdgeInsets.all(6)),
                               badgeContent: const Text('1',
                                   style: TextStyle(
                                       color: GeniusColors.textLight,

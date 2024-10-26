@@ -43,12 +43,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Genius',
-      theme: ThemeData(
-        fontFamily: 'Poppins',
-        useMaterial3: true,
-      ),
-      home: const MainPage(),
-    );
+        title: 'Genius',
+        theme: ThemeData(fontFamily: 'Poppins', useMaterial3: true),
+        home: const MainPage());
   }
 }
