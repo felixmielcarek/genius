@@ -19,7 +19,7 @@ class LeagueBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var fontSize = height / 2;
+    var fontSize = height / 1.8;
     var paddingLeft = width / 10;
     var paddingRight = width / 15;
 
