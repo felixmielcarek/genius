@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:genius/views/components/profile_picture.dart';
 
 import '../resources/genius_colors.dart';
 
@@ -30,7 +31,7 @@ class RankingItem extends StatelessWidget {
         elevation: 8,
         child: Container(
             padding:
-                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
+                const EdgeInsets.only(left: 15, right: 10, top: 4, bottom: 5),
             decoration: BoxDecoration(
                 color: toAccent ? GeniusColors.primary : Colors.white,
                 shape: BoxShape.rectangle,
@@ -43,7 +44,7 @@ class RankingItem extends StatelessWidget {
                       fontSize: biggestTexts,
                       color: toAccent
                           ? GeniusColors.textLight
-                          : GeniusColors.textPrimary)),
+                          : const Color(0xFF7880ea))),
               Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Text("/",
@@ -52,16 +53,12 @@ class RankingItem extends StatelessWidget {
                           color: toAccent
                               ? GeniusColors.textLight
                               : GeniusColors.textSecondary))),
-              Container(
-                  decoration: BoxDecoration(
-                      color: GeniusColors.primary,
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Colors.white, width: 3.0),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black.withOpacity(0.5), blurRadius: 5)
-                      ]),
-                  child: ClipOval(child: Image.memory(picture, height: 35))),
+              ProfilePicture(
+                picture: picture,
+                background: GeniusColors.primary,
+                frameThickness: 2,
+                height: 34,
+              ),
               Padding(
                   padding: const EdgeInsets.only(left: 15.0),
                   child: Text(name,
@@ -73,7 +70,7 @@ class RankingItem extends StatelessWidget {
                               : GeniusColors.textDark))),
               const Spacer(),
               Padding(
-                  padding: const EdgeInsets.only(right: 5.0),
+                  padding: const EdgeInsets.only(right: 5),
                   child: Text(score.toString(),
                       style: TextStyle(
                           fontWeight: FontWeight.bold,

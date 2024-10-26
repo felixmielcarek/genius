@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:genius/views/pages/profile_page.dart';
 import 'package:genius/views/resources/genius_colors.dart';
 
 import '../../domain/business/user.dart';
@@ -40,7 +41,7 @@ class _RankingPageState extends State<RankingPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
+        padding: const EdgeInsets.only(left: 10, right: 10, top: 20),
         decoration: const BoxDecoration(color: GeniusColors.secondary),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Container(
@@ -65,13 +66,23 @@ class _RankingPageState extends State<RankingPage> {
               child: ListView.builder(
                   itemCount: friends.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return RankingItem(
-                      rank: index + 1,
-                      picture: friends[index].picture,
-                      name: friends[index].name,
-                      score: friends[index].coinsWallet,
-                      toAccent: friends[index].id == connectedUser.id,
-                    );
+                    return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  ProfilePage(user: friends[index]),
+                            ),
+                          );
+                        },
+                        child: RankingItem(
+                          rank: index + 1,
+                          picture: friends[index].picture,
+                          name: friends[index].name,
+                          score: friends[index].coinsWallet,
+                          toAccent: friends[index].id == connectedUser.id,
+                        ));
                   }))
         ]));
   }
