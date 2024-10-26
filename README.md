@@ -2,68 +2,11 @@
 
 Technical test for Genius Gambler
 
-## Analyse des consignes
+## Résultat
 
-Objectifs :
-* rester fidèle au modèle
-* mécanisme de navigation
-* mécanisme de gestion de données
-* code propre et efficace
+Voir le dossier `documentation` pour les images de rendu et pour une vidéo de démonstration.
 
-Vues :
-* `appbar` (sans navigation)
-* `navbar` (sans navigation)
-* page **Classement** : 
-    * navigation vers page **Profil**
-    * récupération données **firestore**
-* page **Profil** :
-    * navigation vers page **Classement**
-    * récupération données **firestore**
+## Informations supplémentaires
 
-Roadmap :
-1. Architecture
-2. Front page **Classement**
-3. Back page **Classement** (`firestore`)
-4. `appbar` et `navbar`
-5. Front page **Profil**
-6. Back page **Profil** (`firestore`)
-
-## Architecture
-
-```mermaid
-graph LR;
-   subgraph MobileApplication;
-      direction LR;
-      subgraph ApplicationLayer;
-         direction LR;
-         RP[Ranking Page];
-         RB[Ranking Bloc];
-         PP[Profile Page];
-         PB[Profile Bloc];
-         RP --> RB;
-         RB --> RP;
-         PP --> PB;
-         PB --> PP;
-      end;
-      
-      subgraph DomainLayer;
-         direction TB;
-         UR[User Repository];
-         RR[Ranking Repository];
-
-                  
-      end;
-
-      RB --> UR;
-      RB --> RR;
-      PB --> UR;
-   end;
-
-   subgraph DataLayer;
-      direction LR;
-      F[Firestore];
-
-      UR --> F;
-      RR --> F;
-   end;
-```
+La récupération des données se fait à l'aide des services de Firebase : Firestore Database pour les
+données simples et Cloud Storage pour les images.
